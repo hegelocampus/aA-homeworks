@@ -1,23 +1,23 @@
-require 'concurrent-ruby'
-
-class Stack
+class Queue
   def initialize
     @data = Array.new
   end
 
-  def push(el)
+  def enqueue(el)
     data << el
   end
 
-  def pop
-    data.pop
+  def dequeue
+    data.shift
   end
 
   def peek
     data[-1]
   end
 
-  private
+  private 
 
-  attr_accessor :data
+  attr_accessor
+
 end
+
