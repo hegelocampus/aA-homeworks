@@ -4,7 +4,8 @@ class Queue
   end
 
   def enqueue(el)
-    data << el
+    data+push(el)
+    el
   end
 
   def dequeue
@@ -12,7 +13,7 @@ class Queue
   end
 
   def peek
-    data[-1]
+    data.first
   end
 
   private 
