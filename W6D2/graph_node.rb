@@ -1,3 +1,6 @@
+require 'set'
+require 'byebug'
+
 class Graph_node
   attr_reader :value, :neighbors
 
@@ -15,26 +18,24 @@ class Graph_node
   def add_neighbor(node)
     return nil if @neighbors.include?(node)
     @neighbors << node
-    node.neighbors << self
   end
 
   def inspect
     { "value" => @value, "neighbors" => @neighbors.map { |node| node.value } }.inspect
   end
-end
 
-def bfs(starting_node, target)
-  checked_nodes = []
-  to_check = [starting_node]
+  def bfs(target, checked_nodes = Set.new())
+    to_check = [self]
 
-  until to_check.empty?
-    current = to_check.shift
-    return current if current.value == target
-    checked_nodes << current
-    to_check += current.neighbors.reject { |node| checked_nodes.include?(node) }
+    until to_check.empty?
+      current = to_check.shift
+      return current if current.value == target
+      checked_nodes.add(current) 
+      to_check += current.neighbors.reject { |node| checked_nodes.include?(node) }
+    end
+
+    nil
   end
-
-  nil
 end
 
 a = Graph_node.new('a')
@@ -47,6 +48,7 @@ a.neighbors = [b, c, e]
 c.neighbors = [b, d]
 e.neighbors = [a]
 f.neighbors = [e]
+graph = [a, b, c, d, e, f]
 print "{\n"
 print  "  'a' : #{ a.neighbors.map { |node| node.value }.join(', ') };\n"
 print  "  'b' : #{ b.neighbors.map { |node| node.value }.join(', ') };\n"
@@ -56,8 +58,11 @@ print  "  'e' : #{ e.neighbors.map { |node| node.value }.join(', ') };\n"
 print  "  'f' : #{ f.neighbors.map { |node| node.value }.join(', ') }\n"
 print "}\n"
 puts "Search for 'b'"
-p bfs(a, "b")
+p a.bfs("b")
 puts "Search for 'f'"
-p bfs(a, "f")
+p a.bfs("f")
+puts "Iterative search for 'f'"
+print graph.map { |node| node.bfs("f") }
+print "\n"
 puts "Search for 'z'"
-p bfs(a, "z")
+p a.bfs("z")
