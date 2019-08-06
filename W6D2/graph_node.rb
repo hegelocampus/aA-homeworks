@@ -1,5 +1,6 @@
 class Graph_node
   attr_reader :value, :neighbors
+
   def initialize(value)
     @value = value
     @neighbors = []
@@ -46,7 +47,14 @@ a.neighbors = [b, c, e]
 c.neighbors = [b, d]
 e.neighbors = [a]
 f.neighbors = [e]
-#p [a,b,c,d,e,f]
+print "{\n"
+print  "  'a' : #{ a.neighbors.map { |node| node.value }.join(', ') };\n"
+print  "  'b' : #{ b.neighbors.map { |node| node.value }.join(', ') };\n"
+print  "  'c' : #{ c.neighbors.map { |node| node.value }.join(', ') };\n"
+print  "  'd' : #{ d.neighbors.map { |node| node.value }.join(', ') };\n"
+print  "  'e' : #{ e.neighbors.map { |node| node.value }.join(', ') };\n"
+print  "  'f' : #{ f.neighbors.map { |node| node.value }.join(', ') }\n"
+print "}\n"
 puts "Search for 'b'"
 p bfs(a, "b")
 puts "Search for 'f'"
