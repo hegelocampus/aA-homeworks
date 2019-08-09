@@ -68,10 +68,8 @@ describe Dessert do
 
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in" do
-      #chef = object_spy("Chef") 
-      allow(chef).to receive(:bake) { cake }
+      expect(chef).to receive(:bake) { cake }
       cake.make_more
-      expect(chef).to have_received(:bake) { cake }
     end
   end
 end
