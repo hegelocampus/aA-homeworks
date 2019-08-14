@@ -14,10 +14,9 @@ class LRUCache
   def add(el)
     # adds element to cache according to LRU principle
     if cinclude?(el)
-      @cache.delete(el) { puts "not found" }
+      @cache.delete(el) { raise "cache item not found" }
     elsif cfull? 
-      x = @cache.pop
-      @vals.delete(x)
+      @vals.delete(@cache.pop)
     end
     @cache.unshift(el)
     @vals[el] = @cache.first
