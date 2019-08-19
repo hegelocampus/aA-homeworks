@@ -70,9 +70,11 @@ end
 
 class Playwright
 
+  attr_accessor :id, :name
+
   def self.all
-    data = PlayDBConnection.instance.execute("SELECT * FROM plays")
-    data.map { |datum| Play.new(datum) }
+    data = PlayDBConnection.instance.execute("SELECT * FROM playwrights")
+    data.map { |datum| Playwright.new(datum) }
   end
 
   def self.find_by_name(name)
@@ -102,6 +104,7 @@ class Playwright
       VALUES
         (?)
     SQL
+    self.id = PlayDBConnection.instance.last_insert_row_id
   end
 
   def update
