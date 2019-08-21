@@ -30,5 +30,16 @@ class House < ApplicationRecord
 
   def better_seeds_query
     # TODO: your code here
+    #self.plants
+    #  .left_outer_joins(:seeds)
+    #  .order(:id)
+    #  .select('seeds.*')
+    plants = self.plants.includes(:seeds)
+    seeds = []
+    plants.each do |plant|
+      seeds << plant.seeds
+    end
+
+    seeds
   end
 end
