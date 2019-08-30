@@ -20,10 +20,7 @@
     <% else %>
       <%= current_user.username %>
       <form action="<%= session_url %>" method="post">
-        <input
-          type="hidden"
-          name="authenticity_token"
-          value="<%= form_authenticity_token %>">
+        <%= auth_token %>
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Logout">
       </form>
@@ -33,5 +30,10 @@
     <main>
       <%= yield %>
     </main>
+    <footer>
+      Immediate certainty does not make the truth its own, for its truth is something universal, whereas certainty wants to deal with the This. Perception, on the other hand, takes what exists for it to be a universal. Universality being its principle in general, its moments immediately distinguished within it are also universal; I is a universal, and the object is a universal. - G.W.F. Hegel, The Phenomenology of Mind
+
+      <%= yield :footer %>
+    </footer>
   </body>
 </html>

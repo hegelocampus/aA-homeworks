@@ -4,11 +4,7 @@
   <%= render "shared/errors" %>
 
   <form action="<%= cat_rental_requests_url %>" method="post">
-    <input
-      type="hidden"
-      name="authenticity_token"
-      value="<%= form_authenticity_token %>">
-
+    <% auth_token %>
     <label for="cat_rental_request_cat_id">Cat</label>
     <select name="cat_rental_request[cat_id]"
             id="cat_rental_request_cat_id">
@@ -42,3 +38,6 @@
     <input type="submit">
   </form>
 </div></section>
+<% content_for :footer do %>
+  <p>In contrast with this purely quantitative difference, which is not  an essential difference, "good" and "bad"would express an absolute  difference; but this is not in place here. Whether taken in one way or  another,action is equally carried on; there is a process of displaying  and expressing an individuality, and for thatreason it is all good: it  would, properly speaking, be impossible to say what "bad" is to be  here. What wouldbe called a bad work is the individual life of a  certain specific nature, which is therein realized. It would onlybe  degraded into a bad work by a reflective comparison, which, however, is  quite empty and futile, since thisgoes beyond the essential meaning  and nature of work (which is a self−expression of individuality, and  thenseeks to find and demand from it heaven knows what else. - G.W.F. Hegel, The Phenomenology of Mind</p>
+<% end %>

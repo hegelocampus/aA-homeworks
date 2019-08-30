@@ -5,11 +5,11 @@
     <%= render 'shared/errors' %>
 
     <form action="<%= users_url %>" method="post">
-      <input
+      <% auth_token %>
+<input
         type="hidden"
         name="authenticity_token"
         value="<%= form_authenticity_token %>">
-
       <label for="user_username">User Name</label>
       <input type="text"
         name="user[username]"
@@ -28,3 +28,6 @@
     </form>
   </div>
 </section>
+<% content_for :footer do %>
+  <p>With self−consciousness, then, we have now passed into the native  land of truth, into that kingdom where itis at home. We have to see  how the form or attitude of self−consciousness in the first instance  appears. Whenwe consider this new form and type of knowledge, the  knowledge of self, in its relation to that whichpreceded, namely, the  knowledge of an other, we find, indeed, that this latter has vanished,  but that itsmoments have, at the same time, been preserved; and the  loss consists in this, that those moments are herepresent as they are  implicitly, as they are in themselves. The being which "meaning" dealt  with, particularityand the universality of perception opposed to it,  as also the empty, inner region of understanding−these are nolonger  present as substantial elements (Wesen), but as moments of  self−consciousness, i.e. as abstractions ordifferences, which are, at  the same time, of no account for consciousness itself, or are not  differences at all,and are purely vanishing entities (Wesen). -G.W.F. Hegel, The Phenomenology of Mind</p>
+<% end %>
