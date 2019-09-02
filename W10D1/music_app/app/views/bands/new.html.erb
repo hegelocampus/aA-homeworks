@@ -1,0 +1,20 @@
+<% content_for :h1 do %>Add a new band<% end %>
+<div style="display: flex; flex-direction: column;">
+  <%= render 'shared/errors' %>
+  <br>
+  <br>
+  <form action="<%= bands_url %>" method="post" style="display: flex; flex-direction: column; margin-left: 20px;">
+    <%= auth_token %>
+    <!--<input type="hidden" name= "authenticity_token" value="<% form_authenticity_token %>"/>-->
+    <label for="band_name">Band name:</label>
+    <input
+      type="text"
+      name="band[name]"
+      id="band_name"
+      value="<%= @band.name %>"
+      style="margin-bottom: 10px;"
+      >
+      <br>
+    <input type="submit" value="Add Band" style="color: #1b1d20; background-color: #7b8187; border-radius: 5px; height: 40px; border: 0px;">
+  </form>
+</div>

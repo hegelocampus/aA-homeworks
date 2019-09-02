@@ -1,0 +1,8 @@
+<% content_for :h1 do %><%= @band.name %><% end %>
+<div class="all_album_squares" style="margin-left: 20px;">
+  <% @band.albums.each do |album| %>
+    <div class="album-square" style="height: 100px; width: 100px;">
+      <caption><%=album.name%></caption>
+    </div>
+  <% end %>
+</div>

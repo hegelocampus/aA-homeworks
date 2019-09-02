@@ -1,0 +1,30 @@
+<div style="display: flex; flex-direction: column;">
+  <br>
+  <br>
+  <form action="<%= users_url %>" method="post" style="display: flex; flex-direction: column; margin-left: 20px;">
+    <% auth_token %>
+
+    <input type="hidden" name= "authenticity_token" value="<% form_authenticity_token %>"/>
+    <label for="user_email">Email:</label>
+    <input
+      type="text"
+      name="user[email]"
+      class="button"
+      id="user_email"
+      value="<%= @user.email %>"
+      style="margin-bottom: 10px;"
+      >
+
+    <label for="user_password">Password:</label>
+    <input
+      type="password"
+      name="user[password]"
+      class="button"
+      id="user_password"
+      value="<%= @user.password %>"
+      style="margin-bottom: 10px;"
+      >
+    <br>
+    <input type="submit" value="Create User">
+  </form>
+</div>

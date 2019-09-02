@@ -1,0 +1,8 @@
+<% content_for :h1 do %>Bands<% end %>
+<section class="band-index" style="margin-left: 20px;">
+  <% @bands.each do |band| %>
+    <div class="band-index-item" style="height: 50px; width: 50px;">
+      <a href= "<%= band_url(band) %>"><%= band.name %></a>
+    </div>
+  <% end %>
+</section>

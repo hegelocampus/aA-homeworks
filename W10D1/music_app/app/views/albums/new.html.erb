@@ -1,0 +1,52 @@
+<% content_for :h1 do %>Add a new album<% end %>
+<div style="display: flex; flex-direction: column;">
+  <%= render 'shared/errors' %>
+  <br>
+  <br>
+  <form action="<%= '/albums' %>" method="post" style="display: flex; flex-direction: column; margin-left: 20px;">
+    <%= auth_token %>
+    <section>
+      <label for="album_name">Album name:</label>
+      <input
+        type="text"
+        name="album[name]"
+        id="album_name"
+        value="<%= @album.name %>"
+        style="margin-bottom: 10px;"
+      >
+      <br>
+      <label for="album_band">Band name:</label>
+      <select
+        type="text"
+        name="album[band_id]"
+        id="album_band"
+        value="<%= @album.band ? @album.band.id : nil %>"
+        style="margin-bottom: 10px;"
+      >
+        <option value="">--Please select a band--</option>
+        <% @bands.each do |band| %>
+
+          <option value="<%= band.id %>"><%= band.name %></option>
+        <% end %>
+      </select>
+      <br>
+
+      <label for="album_year">Album year:</label>
+      <input type="number" name="album[year]" id="album_year" value="<%= @album.year %>" min="1888" max="<%= 5 + Time.now.year %>">
+      <br>
+
+
+      <div id="boolean_radio" display="inline">
+        <label for="boolean_radio">Is it a live album?</label>
+        <input type="radio" name="album[live]" id="false" value="No" <%= "checked" if @album.nil? || !@album.live %>>
+        <label for="false">No</label>
+        <input type="radio" name="album[live]" id="true" value="Yes" <%= "checked" if @album.live %>>
+        <label for="false">Yes</label>
+      </div>
+    </section>
+
+    <br>
+    <input type="submit" value="Add Album" style="color: #1b1d20; background-color: #7b8187; border-radius: 5px; height: 40px; border: 0px;">
+  </form>
+</div>
+
