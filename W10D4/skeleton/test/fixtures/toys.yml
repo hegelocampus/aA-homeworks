@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: toys
+#
+#  id           :bigint           not null, primary key
+#  name         :string           not null
+#  toyable_type :string
+#  toyable_id   :bigint
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+
+two:
+  name: MyString
